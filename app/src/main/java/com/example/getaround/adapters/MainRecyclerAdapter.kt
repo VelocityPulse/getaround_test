@@ -17,6 +17,8 @@ import kotlin.concurrent.thread
 class MainRecyclerAdapter(val mCars: Array<Car>, val mContext: Activity) :
     RecyclerView.Adapter<MainRecyclerAdapter.ViewHolder>() {
 
+    var onClickListener: OnClickListener? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layout = LayoutInflater.from(parent.context).inflate(
             R.layout.view_holder_car, parent, false)
@@ -56,6 +58,10 @@ class MainRecyclerAdapter(val mCars: Array<Car>, val mContext: Activity) :
         holder.carPrice.text = car.pricePerDay.toString() + "€/j"
         holder.carRating.rating = car.rating.average
         holder.carRatingNumber.text = "(" + car.rating.count + ")"
+
+        holder.itemView.setOnClickListener {
+            onClickListener?.onClick(holder.car)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -78,6 +84,10 @@ class MainRecyclerAdapter(val mCars: Array<Car>, val mContext: Activity) :
             carRating = itemView.findViewById(R.id.vh_car_rating)
             carRatingNumber = itemView.findViewById(R.id.vh_car_rating_number)
         }
+    }
+
+    interface OnClickListener {
+        fun onClick(car: Car)
     }
 
 }

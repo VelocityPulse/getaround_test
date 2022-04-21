@@ -22,7 +22,5 @@ data class Car(
             Rating(),
             Owner(),
             null
-
     )
-
 }

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/car_profile_picture"
+        android:layout_width="match_parent"
+        android:layout_height="230dp"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/_41" />
+
+    <ImageView
+        android:id="@+id/car_profile_back_arrow"
+        android:tint="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:elevation="5dp"
+        android:src="@drawable/ic_arrow_back" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        app:layout_constraintTop_toBottomOf="@id/car_profile_picture">
+
+        <LinearLayout
+            android:id="@+id/car_profile_info_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/car_profile_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Title 1"
+                android:textSize="25dp" />
+
+            <TextView
+                android:id="@+id/car_profile_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:text="12€/j"
+                android:textAlignment="textEnd"
+                android:textSize="25dp" />
+
+        </LinearLayout>
+
+        <RatingBar
+            android:id="@+id/car_profile_rating"
+            style="@android:style/Widget.DeviceDefault.Light.RatingBar.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:stepSize="0.5"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/car_profile_info_layout" />
+
+        <TextView
+            android:id="@+id/car_profile_rating_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:text="50"
+            android:textSize="10dp"
+            app:layout_constraintBottom_toBottomOf="@id/car_profile_rating"
+            app:layout_constraintLeft_toRightOf="@id/car_profile_rating"
+            app:layout_constraintTop_toTopOf="@id/car_profile_rating" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/car_profile_rating">
+
+            <TextView
+                android:id="@+id/car_profile_owner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="50dp"
+                android:text="Owner"
+                android:textSize="15dp" />
+
+            <ProgressBar
+                android:id="@+id/car_profile_owner_progress_bar"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@mipmap/_ic_launcher"
+                app:layout_constraintTop_toBottomOf="@id/car_profile_owner" />
+
+            <ImageView
+                android:id="@+id/car_profile_owner_picture"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/_ic_launcher"
+                android:visibility="invisible"
+                app:layout_constraintTop_toBottomOf="@id/car_profile_owner" />
+
+            <TextView
+                android:id="@+id/car_profile_owner_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="User Name"
+                android:textSize="15dp"
+                app:layout_constraintLeft_toRightOf="@id/car_profile_owner_picture"
+                app:layout_constraintTop_toTopOf="@id/car_profile_owner_picture" />
+
+            <RatingBar
+                android:id="@+id/car_profile_owner_rating"
+                style="@android:style/Widget.DeviceDefault.Light.RatingBar.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:numStars="5"
+                android:stepSize="0.5"
+                app:layout_constraintLeft_toRightOf="@id/car_profile_owner_picture"
+                app:layout_constraintTop_toBottomOf="@id/car_profile_owner_name" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

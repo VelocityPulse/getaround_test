@@ -1,5 +1,6 @@
 package com.example.getaround
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -21,8 +22,11 @@ class MainActivity : AppCompatActivity() {
 
     private var adapter: MainRecyclerAdapter? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    companion object {
+        val CAR_ID: String = "CAR_ID_KEY"
+    }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
@@ -39,7 +43,7 @@ class MainActivity : AppCompatActivity() {
                 appState.cars = cars
                 createAdapter(cars)
             }
-            // TODO try another reload if the fetch failed
+            // TODO try another reload if the fetch fails
         }
     }
 
@@ -61,5 +65,21 @@ class MainActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
 
         recyclerView.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
+
+        adapter!!.onClickListener = object : MainRecyclerAdapter.OnClickListener {
+            override fun onClick(car: Car) {
+                println("CLICK")
+                prepareToStartCarProfileActivity(car)
+            }
+        }
+    }
+
+    private fun prepareToStartCarProfileActivity(car: Car) {
+
+        val intent = Intent(this, CarProfileActivity::class.java).apply {
+            appState.cars?.let { putExtra(CAR_ID, it.indexOf(car)) }
+        }
+
+        startActivity(intent)
     }
 }
